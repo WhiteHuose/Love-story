@@ -1,0 +1,33 @@
+static 的用法
+
+int main(void)
+{
+    while(1)
+    {
+        print_i（）;
+    }
+}
+
+void print_i（void）
+{
+    int i = 0;
+
+    i ++;
+    printf("i is %d",&i);
+    delay_s(1);
+}
+
+对于print_i这个函数，对于局部变量i的声明为int类型，此种情况下打印出来的全部都是1
+
+而对于下面这种情况：
+
+void print_i（void）
+{
+    static int i = 0;
+
+    i ++;
+    printf("i is %d",&i);
+    delay_s(1);
+}
+
+将i声明为static int 类型，打印出来的是1 2 3 4 5 。。。。。
