@@ -1,0 +1,22 @@
+二维数组作为指针参数被调用时出现指向错误的问题
+
+void str_copy(uint16_t * Des,uint16_t * Src，uint8_t length)
+{
+    for(uint8_t i = 0;i<length;i++)
+    {
+        Des[i] = Src[i];
+    }
+}
+
+uint16_t a[4];
+uint16_t b[4];
+str_copy(a,b,4);
+
+这样可以实现将数组b复制到数组a的功能
+
+但是如果是下面的这种情况：
+uint16_t a[2][4];
+str_copy(a[0],a[1],4);
+
+为了将二维数组a的a[1][0]~a[1][3]的数值复制到a[0][0]~a[0][3],这样调用会出现
+指针指向错误的问题，具体原因未知。。。
